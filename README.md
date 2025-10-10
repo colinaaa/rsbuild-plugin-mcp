@@ -79,7 +79,7 @@ export default defineConfig({
 
 ### With other plugins
 
-This plugin expose the `McpServer` instance using [`api.expose`](https://rsbuild.rs/plugins/dev/core#apiexpose).
+This plugin exposes the `McpServer` instance using [`api.expose`](https://rsbuild.rs/plugins/dev/core#apiexpose).
 
 You may use [`api.useExposed`](https://rsbuild.rs/plugins/dev/core#apiuseexposed) to get the instance and make customization:
 
@@ -93,7 +93,7 @@ export function pluginFoo(): RsbuildPlugin {
     pre: ['plugin-mcp'],
     setup(api) {
       if (api.isPluginExists('plugin-mcp')) {
-        const mcpServer = api.useExposed<McpServer>('rsbuild-plugin-mcp:mcpServer')
+        const mcpServer = api.useExposed<McpServer>('rsbuild-plugin-mcp:mcpServer')!
         // Register tools, resources and prompts
         mcpServer.tool(/** args */)
         mcpServer.resource(/** args */)
