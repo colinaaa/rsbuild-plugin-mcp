@@ -29,6 +29,10 @@ export default {
 };
 ```
 
+## Credits
+
+This plugin is inspired by [vite-plugin-mcp](https://github.com/antfu/nuxt-mcp/tree/main/packages/vite-plugin-mcp). Both the implementation and documentation have been adapted and referenced from the original Vite plugin.
+
 ## License
 
 [MIT](./LICENSE).

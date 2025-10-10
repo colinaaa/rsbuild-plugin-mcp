@@ -10,35 +10,35 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
+      "import": "./dist/index.js"
     }
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "build": "rslib build",
+    "bump": "npx bumpp",
     "dev": "rslib build --watch",
     "lint": "biome check .",
     "lint:write": "biome check . --write",
     "prepare": "simple-git-hooks && npm run build",
-    "test": "playwright test",
-    "bump": "npx bumpp"
+    "test": "rstest"
   },
   "simple-git-hooks": {
     "pre-commit": "npm run lint:write"
   },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.20.0"
+  },
   "devDependencies": {
     "@biomejs/biome": "^2.2.4",
-    "@playwright/test": "^1.55.1",
     "@rsbuild/core": "^1.5.13",
     "@rslib/core": "^0.15.0",
+    "@rstest/core": "^0.5.1",
     "@types/node": "^22.18.8",
-    "playwright": "^1.55.1",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3"
   },
