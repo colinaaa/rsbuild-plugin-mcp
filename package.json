@@ -22,8 +22,8 @@
     "build": "rslib build",
     "bump": "npx bumpp",
     "dev": "rslib build --watch",
-    "lint": "biome check .",
-    "lint:write": "biome check . --write",
+    "lint": "dprint check && biome check .",
+    "lint:write": "dprint fmt && biome check . --write",
     "prepare": "simple-git-hooks && npm run build",
     "test": "rstest"
   },
@@ -39,6 +39,7 @@
     "@rslib/core": "^0.15.0",
     "@rstest/core": "^0.5.1",
     "@types/node": "^22.18.8",
+    "dprint": "^0.50.2",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3"
   },
