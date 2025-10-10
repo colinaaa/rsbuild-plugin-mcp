@@ -24,7 +24,8 @@
     "dev": "rslib build --watch",
     "lint": "biome check .",
     "lint:write": "biome check . --write",
-    "prepare": "simple-git-hooks && npm run build"
+    "prepare": "simple-git-hooks && npm run build",
+    "test": "rstest"
   },
   "simple-git-hooks": {
     "pre-commit": "npm run lint:write"
@@ -36,6 +37,7 @@
     "@biomejs/biome": "^2.2.4",
     "@rsbuild/core": "^1.5.13",
     "@rslib/core": "^0.15.0",
+    "@rstest/core": "^0.5.1",
     "@types/node": "^22.18.8",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3"
