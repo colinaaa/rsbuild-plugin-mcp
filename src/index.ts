@@ -1,14 +1,80 @@
+import type { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import type { RsbuildPlugin } from '@rsbuild/core';
 
-export const pluginMCP = (): RsbuildPlugin => ({
+type MaybePromise<T> = T | Promise<T>;
+
+export interface PluginMCPOptions {
+  /**
+   * Setup the MCP server, this is called when the MCP server is created.
+   *
+   * @example
+   *
+   * Extend the MCP server:
+   *
+   * ```js
+   * import { defineConfig } from '@rsbuild/core'
+   * import { pluginMCP } from 'rsbuild-plugin-mcp'
+   *
+   * export default defineConfig({
+   *   plugins: [
+   *     pluginMCP({
+   *       mcpServerSetup(mcpServer) {
+   *         // Register tools, resources and prompts
+   *         mcpServer.tool()
+   *         mcpServer.resource()
+   *         mcpServer.prompt()
+   *       },
+   *     }),
+   *   ],
+   * })
+   * ```
+   *
+   * @example
+   *
+   * Override the MCP server:
+   *
+   * ```js
+   * import { defineConfig } from '@rsbuild/core'
+   * import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+   * import { pluginMCP } from 'rsbuild-plugin-mcp'
+   *
+   * export default defineConfig({
+   *   plugins: [
+   *     pluginMCP({
+   *       mcpServerSetup() {
+   *         // Create a new `McpServer` and return
+   *         const mcpServer = new McpServer()
+   *         // Register tools, resources and prompts
+   *         mcpServer.tool()
+   *         return mcpServer
+   *       },
+   *     }),
+   *   ],
+   * })
+   * ```
+   *
+   * @param mcpServer - The default MCP server.
+   * Use `mcpServer.tool`, `mcpServer.resource` or `mcpServer.prompt` to extend the server.
+   *
+   * @returns If a new MCP server is returned, it will replace the default one.
+   */
+  mcpServerSetup: (
+    mcpServer: McpServer,
+  ) => MaybePromise<void> | MaybePromise<McpServer>;
+}
+
+export const pluginMCP = (options?: PluginMCPOptions): RsbuildPlugin => ({
   name: 'plugin-mcp',
 
   apply: 'serve',
 
   async setup(api) {
-    const mcpServer = await import('./server.js').then(({ createMcpServer }) =>
+    let mcpServer = await import('./server.js').then(({ createMcpServer }) =>
       createMcpServer(api),
     );
+
+    mcpServer = (await options?.mcpServerSetup(mcpServer)) ?? mcpServer;
+    api.expose('rsbuild-plugin-mcp:mcpServer', mcpServer);
 
     // TODO: make this configurable
     const base = '/__mcp';
