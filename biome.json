@@ -8,22 +8,17 @@
     "useIgnoreFile": true
   },
   "formatter": {
-    "indentStyle": "space"
-  },
-  "javascript": {
-    "formatter": {
-      "quoteStyle": "single"
-    }
-  },
-  "css": {
-    "formatter": {
-      "enabled": true
-    }
+    "enabled": false
   },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true
+    }
+  },
+  "json": {
+    "parser": {
+      "allowTrailingCommas": true
     }
   }
 }

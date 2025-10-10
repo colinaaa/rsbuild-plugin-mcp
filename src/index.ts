@@ -69,9 +69,7 @@ export const pluginMCP = (options?: PluginMCPOptions): RsbuildPlugin => ({
   apply: 'serve',
 
   async setup(api) {
-    let mcpServer = await import('./server.js').then(({ createMcpServer }) =>
-      createMcpServer(api),
-    );
+    let mcpServer = await import('./server.js').then(({ createMcpServer }) => createMcpServer(api));
 
     mcpServer = (await options?.mcpServerSetup(mcpServer)) ?? mcpServer;
     api.expose('rsbuild-plugin-mcp:mcpServer', mcpServer);

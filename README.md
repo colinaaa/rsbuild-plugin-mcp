@@ -21,12 +21,12 @@ npm add rsbuild-plugin-mcp -D
 Add plugin to your `rsbuild.config.ts`:
 
 ```ts
-import { defineConfig } from '@rsbuild/core'
-import { pluginMCP } from 'rsbuild-plugin-mcp'
+import { defineConfig } from '@rsbuild/core';
+import { pluginMCP } from 'rsbuild-plugin-mcp';
 
 export default defineConfig({
   plugins: [pluginMCP()],
-})
+});
 ```
 
 ## Customize the MCP server
@@ -38,43 +38,43 @@ The MCP server can be extended with the following ways:
 Use the `mcpServerSetup` to customize the MCP server.
 
 ```ts
-import { defineConfig } from '@rsbuild/core'
-import { pluginMCP } from 'rsbuild-plugin-mcp'
+import { defineConfig } from '@rsbuild/core';
+import { pluginMCP } from 'rsbuild-plugin-mcp';
 
 export default defineConfig({
   plugins: [
     pluginMCP({
       mcpServerSetup(mcpServer) {
         // Register tools, resources and prompts
-        mcpServer.tool(/** args */)
-        mcpServer.resource(/** args */)
-        mcpServer.prompt(/** args */)
+        mcpServer.tool(); /** args */
+        mcpServer.resource(); /** args */
+        mcpServer.prompt(); /** args */
       },
     }),
   ],
-})
+});
 ```
 
 You may also return a new `McpServer` instance to replace the default one:
 
 ```js
-import { defineConfig } from '@rsbuild/core'
-import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-import { pluginMCP } from 'rsbuild-plugin-mcp'
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { defineConfig } from '@rsbuild/core';
+import { pluginMCP } from 'rsbuild-plugin-mcp';
 
 export default defineConfig({
   plugins: [
     pluginMCP({
       mcpServerSetup() {
         // Create a new `McpServer` and return
-        const mcpServer = new McpServer()
+        const mcpServer = new McpServer();
         // Register tools, resources and prompts
-        mcpServer.tool()
-        return mcpServer
+        mcpServer.tool();
+        return mcpServer;
       },
     }),
   ],
-})
+});
 ```
 
 ### With other plugins

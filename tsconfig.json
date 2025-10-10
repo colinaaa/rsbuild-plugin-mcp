@@ -10,7 +10,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "module": "Node18",
-    "moduleResolution": "Node16"
+    "moduleResolution": "Node16",
   },
-  "include": ["src"]
+  "include": ["src"],
 }

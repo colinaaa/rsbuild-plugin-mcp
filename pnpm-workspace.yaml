@@ -1,6 +1,11 @@
 packages:
   - playground
 
-onlyBuiltDependencies:
+ignoredBuiltDependencies:
   - core-js
+  - dprint
+
+onlyBuiltDependencies:
   - simple-git-hooks
+
+strictDepBuilds: true
