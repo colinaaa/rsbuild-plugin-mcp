@@ -29,6 +29,30 @@ export default defineConfig({
 });
 ```
 
+## Options
+
+### `mcpRouteRoot`
+
+- Type: `string | undefined`
+- Default: `/__mcp`
+
+Customize the routes of the MCP server.
+
+- Example:
+
+```ts
+import { defineConfig } from '@rsbuild/core';
+import { pluginMCP } from 'rsbuild-plugin-mcp';
+
+export default defineConfig({
+  plugins: [
+    pluginMCP({
+      mcpRouteRoot: '/api/__mcp',
+    }),
+  ],
+});
+```
+
 ## Customize the MCP server
 
 The MCP server can be extended with the following ways:

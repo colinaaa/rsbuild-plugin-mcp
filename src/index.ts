@@ -5,6 +5,11 @@ type MaybePromise<T> = T | Promise<T>;
 
 export interface PluginMCPOptions {
   /**
+   * The root route to the MCP server. Defaults to `/__mcp`.
+   */
+  mcpRouteRoot?: string | undefined;
+
+  /**
    * Setup the MCP server, this is called when the MCP server is created.
    *
    * @example
@@ -58,7 +63,7 @@ export interface PluginMCPOptions {
    *
    * @returns If a new MCP server is returned, it will replace the default one.
    */
-  mcpServerSetup: (
+  mcpServerSetup?: (
     mcpServer: McpServer,
   ) => MaybePromise<void> | MaybePromise<McpServer>;
 }
@@ -71,11 +76,10 @@ export const pluginMCP = (options?: PluginMCPOptions): RsbuildPlugin => ({
   async setup(api) {
     let mcpServer = await import('./server.js').then(({ createMcpServer }) => createMcpServer(api));
 
-    mcpServer = (await options?.mcpServerSetup(mcpServer)) ?? mcpServer;
+    mcpServer = (await options?.mcpServerSetup?.(mcpServer)) ?? mcpServer;
     api.expose('rsbuild-plugin-mcp:mcpServer', mcpServer);
 
-    // TODO: make this configurable
-    const base = '/__mcp';
+    const base = options?.mcpRouteRoot ?? '/__mcp';
 
     const { setupRoutes } = await import('./connect.js');
     setupRoutes(api, base, mcpServer);

@@ -111,5 +111,26 @@ describe('Config', () => {
         handle: expect.any(Function),
       });
     });
+
+    test('mcpRouteRoot', async () => {
+      const { pluginMCP } = await import('../src/index.js');
+      const rsbuild = await createRsbuild({
+        rsbuildConfig: {
+          plugins: [pluginMCP({ mcpRouteRoot: '/foo' })],
+        },
+      });
+
+      const server = await rsbuild.createDevServer({
+        runCompile: false,
+      });
+      expect(server.middlewares.stack).toContainEqual({
+        route: '/foo/sse',
+        handle: expect.any(Function),
+      });
+      expect(server.middlewares.stack).toContainEqual({
+        route: '/foo/messages',
+        handle: expect.any(Function),
+      });
+    });
   });
 });
