@@ -1,6 +1,6 @@
 {
   "name": "rsbuild-plugin-mcp",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/colinaaa/rsbuild-plugin-mcp.git"
