@@ -1,7 +1,10 @@
 {
-  "name": "rsbuild-plugin-example",
+  "name": "rsbuild-plugin-mcp",
   "version": "0.0.0",
-  "repository": "https://github.com/rspack-contrib/rsbuild-plugin-template",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colinaaa/rsbuild-plugin-mcp.git"
+  },
   "license": "MIT",
   "type": "module",
   "exports": {
