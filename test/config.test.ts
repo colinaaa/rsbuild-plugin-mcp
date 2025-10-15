@@ -3,10 +3,10 @@ import { assert, describe, expect, rstest, test } from '@rstest/core';
 
 describe('Config', () => {
   test('should not apply plugin when build', async () => {
-    const { pluginMCP } = await import('../src/index.js');
+    const { pluginMcp } = await import('../src/index.js');
     const rsbuild = await createRsbuild({
       rsbuildConfig: {
-        plugins: [pluginMCP()],
+        plugins: [pluginMcp()],
       },
     });
 
@@ -17,13 +17,13 @@ describe('Config', () => {
 
   describe('printUrls', () => {
     test('should respect server.printUrls = false', async () => {
-      const { pluginMCP } = await import('../src/index.js');
+      const { pluginMcp } = await import('../src/index.js');
       const rsbuild = await createRsbuild({
         rsbuildConfig: {
           server: {
             printUrls: false,
           },
-          plugins: [pluginMCP()],
+          plugins: [pluginMcp()],
         },
       });
 
@@ -33,10 +33,10 @@ describe('Config', () => {
     });
 
     test('should append MCP url to printed urls', async () => {
-      const { pluginMCP } = await import('../src/index.js');
+      const { pluginMcp } = await import('../src/index.js');
       const rsbuild = await createRsbuild({
         rsbuildConfig: {
-          plugins: [pluginMCP()],
+          plugins: [pluginMcp()],
         },
       });
 
@@ -61,10 +61,10 @@ describe('Config', () => {
         .fn()
         .mockReturnValue(['http://localhost:3000', 'https://example.com']);
 
-      const { pluginMCP } = await import('../src/index.js');
+      const { pluginMcp } = await import('../src/index.js');
       const rsbuild = await createRsbuild({
         rsbuildConfig: {
-          plugins: [pluginMCP()],
+          plugins: [pluginMcp()],
           server: {
             printUrls: fn,
           },
@@ -92,10 +92,10 @@ describe('Config', () => {
 
   describe('Server', () => {
     test('should have middleware routes registered', async () => {
-      const { pluginMCP } = await import('../src/index.js');
+      const { pluginMcp } = await import('../src/index.js');
       const rsbuild = await createRsbuild({
         rsbuildConfig: {
-          plugins: [pluginMCP()],
+          plugins: [pluginMcp()],
         },
       });
       const rawRsbuild = await createRsbuild();
@@ -121,10 +121,10 @@ describe('Config', () => {
     });
 
     test('mcpRouteRoot', async () => {
-      const { pluginMCP } = await import('../src/index.js');
+      const { pluginMcp } = await import('../src/index.js');
       const rsbuild = await createRsbuild({
         rsbuildConfig: {
-          plugins: [pluginMCP({ mcpRouteRoot: '/foo' })],
+          plugins: [pluginMcp({ mcpRouteRoot: '/foo' })],
         },
       });
 

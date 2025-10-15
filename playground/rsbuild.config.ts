@@ -1,6 +1,6 @@
 import { defineConfig } from '@rsbuild/core';
-import { pluginMCP } from '../src';
+import { pluginMcp } from '../src';
 
 export default defineConfig({
-  plugins: [pluginMCP()],
+  plugins: [pluginMcp()],
 });
