@@ -95,13 +95,13 @@ export const pluginMCP = (options?: PluginMCPOptions): RsbuildPlugin => ({
             if (typeof config.server?.printUrls === 'function') {
               const urls = config.server.printUrls(params);
               if (Array.isArray(urls)) {
-                params.urls = urls;
+                params.urls = urls.map(u => typeof u === 'string' ? u : u.url);
               }
             }
 
             const { port, protocol, urls } = params;
 
-            return urls.concat(`${protocol}://localhost:${port}${base}/sse`);
+            return [...urls, { label: 'MCP:', url: `${protocol}://localhost:${port}${base}/sse` }];
           },
         },
       });

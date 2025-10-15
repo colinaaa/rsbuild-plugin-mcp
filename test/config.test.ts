@@ -48,7 +48,12 @@ describe('Config', () => {
 
       expect(
         printUrls({ protocol: 'http', port: 3001, routes: [], urls: [] }),
-      ).toEqual(['http://localhost:3001/__mcp/sse']);
+      ).toEqual([
+        {
+          label: 'MCP:',
+          url: 'http://localhost:3001/__mcp/sse',
+        },
+      ]);
     });
 
     test('should append MCP url to custom printUrls', async () => {
@@ -77,7 +82,10 @@ describe('Config', () => {
       ).toEqual([
         'http://localhost:3000',
         'https://example.com',
-        'http://localhost:3002/__mcp/sse',
+        {
+          label: 'MCP:',
+          url: 'http://localhost:3002/__mcp/sse',
+        },
       ]);
     });
   });
