@@ -3,7 +3,7 @@ import type { RsbuildPlugin } from '@rsbuild/core';
 
 type MaybePromise<T> = T | Promise<T>;
 
-export interface PluginMCPOptions {
+export interface pluginMcpOptions {
   /**
    * The root route to the MCP server. Defaults to `/__mcp`.
    */
@@ -18,11 +18,11 @@ export interface PluginMCPOptions {
    *
    * ```js
    * import { defineConfig } from '@rsbuild/core'
-   * import { pluginMCP } from 'rsbuild-plugin-mcp'
+   * import { pluginMcp } from 'rsbuild-plugin-mcp'
    *
    * export default defineConfig({
    *   plugins: [
-   *     pluginMCP({
+   *     pluginMcp({
    *       mcpServerSetup(mcpServer) {
    *         // Register tools, resources and prompts
    *         mcpServer.tool()
@@ -41,11 +41,11 @@ export interface PluginMCPOptions {
    * ```js
    * import { defineConfig } from '@rsbuild/core'
    * import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
-   * import { pluginMCP } from 'rsbuild-plugin-mcp'
+   * import { pluginMcp } from 'rsbuild-plugin-mcp'
    *
    * export default defineConfig({
    *   plugins: [
-   *     pluginMCP({
+   *     pluginMcp({
    *       mcpServerSetup() {
    *         // Create a new `McpServer` and return
    *         const mcpServer = new McpServer()
@@ -68,7 +68,7 @@ export interface PluginMCPOptions {
   ) => MaybePromise<void> | MaybePromise<McpServer>;
 }
 
-export const pluginMCP = (options?: PluginMCPOptions): RsbuildPlugin => ({
+export const pluginMcp = (options?: pluginMcpOptions): RsbuildPlugin => ({
   name: 'plugin-mcp',
 
   apply: 'serve',
@@ -108,3 +108,8 @@ export const pluginMCP = (options?: PluginMCPOptions): RsbuildPlugin => ({
     });
   },
 });
+
+/**
+ * @deprecated - Use {@link pluginMcp} instead.
+ */
+export const pluginMCP = pluginMcp;

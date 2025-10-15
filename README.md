@@ -22,10 +22,10 @@ Add plugin to your `rsbuild.config.ts`:
 
 ```ts
 import { defineConfig } from '@rsbuild/core';
-import { pluginMCP } from 'rsbuild-plugin-mcp';
+import { pluginMcp } from 'rsbuild-plugin-mcp';
 
 export default defineConfig({
-  plugins: [pluginMCP()],
+  plugins: [pluginMcp()],
 });
 ```
 
@@ -42,11 +42,11 @@ Customize the routes of the MCP server.
 
 ```ts
 import { defineConfig } from '@rsbuild/core';
-import { pluginMCP } from 'rsbuild-plugin-mcp';
+import { pluginMcp } from 'rsbuild-plugin-mcp';
 
 export default defineConfig({
   plugins: [
-    pluginMCP({
+    pluginMcp({
       mcpRouteRoot: '/api/__mcp',
     }),
   ],
@@ -63,11 +63,11 @@ Use the `mcpServerSetup` to customize the MCP server.
 
 ```ts
 import { defineConfig } from '@rsbuild/core';
-import { pluginMCP } from 'rsbuild-plugin-mcp';
+import { pluginMcp } from 'rsbuild-plugin-mcp';
 
 export default defineConfig({
   plugins: [
-    pluginMCP({
+    pluginMcp({
       mcpServerSetup(mcpServer) {
         // Register tools, resources and prompts
         mcpServer.tool(); /** args */
@@ -84,11 +84,11 @@ You may also return a new `McpServer` instance to replace the default one:
 ```js
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { defineConfig } from '@rsbuild/core';
-import { pluginMCP } from 'rsbuild-plugin-mcp';
+import { pluginMcp } from 'rsbuild-plugin-mcp';
 
 export default defineConfig({
   plugins: [
-    pluginMCP({
+    pluginMcp({
       mcpServerSetup() {
         // Create a new `McpServer` and return
         const mcpServer = new McpServer();
