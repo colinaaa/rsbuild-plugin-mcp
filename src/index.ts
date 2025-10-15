@@ -3,7 +3,7 @@ import type { RsbuildPlugin } from '@rsbuild/core';
 
 type MaybePromise<T> = T | Promise<T>;
 
-export interface pluginMcpOptions {
+export interface PluginMcpOptions {
   /**
    * The root route to the MCP server. Defaults to `/__mcp`.
    */
@@ -68,7 +68,7 @@ export interface pluginMcpOptions {
   ) => MaybePromise<void> | MaybePromise<McpServer>;
 }
 
-export const pluginMcp = (options?: pluginMcpOptions): RsbuildPlugin => ({
+export const pluginMcp = (options?: PluginMcpOptions): RsbuildPlugin => ({
   name: 'plugin-mcp',
 
   apply: 'serve',
