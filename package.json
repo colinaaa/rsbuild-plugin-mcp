@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.4.12",
-    "@rsbuild/core": "^1.7.5",
+    "@rsbuild/core": "^2.0.2",
     "@rslib/core": "^0.21.2",
     "@rstest/core": "^0.9.7",
     "@types/node": "^22.19.17",
@@ -44,7 +44,7 @@
     "typescript": "^5.9.3"
   },
   "peerDependencies": {
-    "@rsbuild/core": "^1.5.17"
+    "@rsbuild/core": "^1.5.17 || ^2.0.0-0"
   },
   "peerDependenciesMeta": {
     "@rsbuild/core": {
