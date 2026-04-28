@@ -38,7 +38,7 @@
     "@rsbuild/core": "^2.0.2",
     "@rslib/core": "^0.21.2",
     "@rstest/core": "^0.9.7",
-    "@types/node": "^22.19.17",
+    "@types/node": "^24.12.2",
     "dprint": "^0.54.0",
     "simple-git-hooks": "^2.13.1",
     "typescript": "^5.9.3"
